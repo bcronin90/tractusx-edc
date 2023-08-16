@@ -90,9 +90,8 @@ public class ProviderGatewayController implements ProviderGatewayApi {
 
     @GET
     @Path("/{paths: .+}")
-    @PathParam(value = "paths")
     @Override
-    public void requestAsset(@Context ContainerRequestContext context, @Suspended AsyncResponse response) {
+    public void requestAsset(@Context ContainerRequestContext context, @Suspended AsyncResponse response, @PathParam(value = "paths") String path) {
         var tokens = context.getHeaders().get(HttpHeaders.AUTHORIZATION);
         if (tokens == null || tokens.isEmpty()) {
             response.resume(createMessageResponse(UNAUTHORIZED, "No bearer token", context.getMediaType()));

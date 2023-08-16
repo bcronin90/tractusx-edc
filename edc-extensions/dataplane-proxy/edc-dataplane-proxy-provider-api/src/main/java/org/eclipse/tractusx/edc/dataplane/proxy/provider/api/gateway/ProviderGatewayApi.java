@@ -34,5 +34,5 @@ public interface ProviderGatewayApi {
     @Operation(responses = {
             @ApiResponse(content = @Content(mediaType = "application/json"), description = "Gets asset data")
     })
-    void requestAsset(@Context ContainerRequestContext context, @Suspended AsyncResponse response);
+    void requestAsset(@Context ContainerRequestContext context, @Suspended AsyncResponse response, String path);
 }
