@@ -16,6 +16,7 @@ package org.eclipse.tractusx.edc.dataplane.proxy.provider.api.gateway;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.container.AsyncResponse;
 import jakarta.ws.rs.container.ContainerRequestContext;
 import jakarta.ws.rs.container.Suspended;
@@ -89,6 +90,7 @@ public class ProviderGatewayController implements ProviderGatewayApi {
 
     @GET
     @Path("/{paths: .+}")
+    @PathParam(value = "paths")
     @Override
     public void requestAsset(@Context ContainerRequestContext context, @Suspended AsyncResponse response) {
         var tokens = context.getHeaders().get(HttpHeaders.AUTHORIZATION);
